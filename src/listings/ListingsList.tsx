@@ -23,7 +23,7 @@ function ListingsList() {
     <InfiniteScroll
       dataLength={allListings.length}
       next={() => fetchMore({ variables: { limit: PAGINATION_PAGE_SIZE, offset: allListings.length } })}
-      hasMore={true}
+      hasMore={false}
       loader={<h4>Loading...</h4>}
       endMessage={
         <p style={{ textAlign: "center" }}>
@@ -31,7 +31,7 @@ function ListingsList() {
         </p>
       }
     >
-      <Row className="m-lg-5" fluid>
+      <Row className="m-lg-5" fluid={+true}>
         <Col lg={2}/>
         <Col>
           <Row>

@@ -3,32 +3,27 @@
 }
 
 .listing-carousel-last-image-label {
-  left: 50%;
-  top: 20%;
+  left: 60%;
+  top: 50%;
   z-index: 100;
   color: white;
   position: absolute;
   transform: translate(-50%, -50%);
 }
 
-.listing-image-last-carousel-item {
-  position: relative;
-  height: 100vh;
-}
-
-.listing-list-item {
-  height: 20vh;
-  margin-bottom: 10vh;
-}
-
 .listing-list-item-image-carousel {
-  height: 15vh;
+  position: relative;
 }
 
-.carousel .carousel-indicators {
-  opacity: 0;
-}
+//.listing-image-carousel-dots-container {
+//  position: absolute;
+//  bottom: 0;
+//  margin-left: auto;
+//  margin-right: auto;
+//  left: 0;
+//  right: 0;
+//}
 
-.carousel:hover .carousel-indicators {
-  opacity: 1;
+body {
+  background-color: gray
 }
