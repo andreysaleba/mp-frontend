@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
+import ListingImageCarousel from "./listings/ListingImageCarousel";
 
-function ListingsListItem({ id, name, price, shortAddress, createdAt }: Listing) {
+function ListingsListItem({ id, name, price, shortAddress, createdAt, images }: Listing) {
   return (
     <Col lg={3} sm={4} xs={3} key={id}>
       <Row>
@@ -8,6 +9,7 @@ function ListingsListItem({ id, name, price, shortAddress, createdAt }: Listing)
         <span>{price}</span>
         <span>{shortAddress}</span>
         <span>{createdAt}</span>
+        <ListingImageCarousel images={images} name={name}/>
       </Row>
     </Col>
   );

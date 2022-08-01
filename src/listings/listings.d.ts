@@ -4,4 +4,5 @@ interface Listing {
   price: number;
   shortAddress: string;
   createdAt: string;
+  images: string[]
 }
