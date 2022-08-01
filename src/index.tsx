@@ -12,7 +12,20 @@ const root = ReactDOM.createRoot(
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/graphql",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          allListings: {
+            keyArgs: false,
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
+            },
+          }
+        }
+      }
+    }
+  }),
 });
 
 root.render(

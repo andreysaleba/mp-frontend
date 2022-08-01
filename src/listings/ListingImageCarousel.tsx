@@ -8,7 +8,7 @@ function ListingImageCarousel({ images, name }: { images: string[], name: string
   const imagesCount = images.length;
   if (imagesCount > LIST_CAROUSEL_IMAGES_TO_DISPLAY) {
     return (
-      <Carousel interval={null}>
+      <Carousel controls={false} interval={null} className="listing-list-item-image-carousel">
         {images.slice(0, 3).map(ListingImageCarouselItem)}
         {ListingImageLastCarouselItem(images[4], imagesCount - LIST_CAROUSEL_IMAGES_TO_DISPLAY)}
       </Carousel>
@@ -16,7 +16,7 @@ function ListingImageCarousel({ images, name }: { images: string[], name: string
   }
 
   return (
-    <Carousel interval={null}>
+    <Carousel interval={null} controls={false}>
       {images.map(ListingImageCarouselItem)}
     </Carousel>
   );

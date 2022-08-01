@@ -3,6 +3,6 @@ interface Listing {
   name: string;
   price: number;
   shortAddress: string;
-  createdAt: string;
+  createdAt: Date;
   images: string[]
 }
