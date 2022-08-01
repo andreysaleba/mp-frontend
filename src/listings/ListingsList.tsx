@@ -1,35 +1,18 @@
 import ListingsListItem from "../ListingsListItem";
 import { Row } from "react-bootstrap";
-import './Listings.scss';
-
-const DATA = [ {
-  id: 1,
-  name: "Кроссовки Nike Cortez",
-  price: 2000,
-  shortAddress: "London, Hammingway st. 1",
-  createdAt: "28 июля 13-25",
-  images: [ "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E", "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E", "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E" ]
-}, {
-  id: 2,
-  name: "Кроссовки Nike Cortez",
-  price: 2000,
-  shortAddress: "London, Hammingway st. 1",
-  createdAt: "28 июля 13-25",
-  images: [
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E",
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E",
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E",
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E",
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E",
-    "https://32.img.avito.st/image/1/1.PQDmlra_kengMlfukNoKcjs1l-9eM5PjWIWUL1U1k-lScw.-y2Htc_8hHP4dEVancHTmIpuYT-GmghHzwWcM4RCy7E"
-  ]
-}
-];
+import "./Listings.scss";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_LISTINGS } from "../operations/queries/getAllListings";
 
 function ListingsList() {
+  const { loading, data, error } = useQuery(GET_ALL_LISTINGS, { variables: { limit: 40, offset: 0 } });
+
+  if (loading) return <p>Loading...</p>;
+  if (error) <p>Error :( </p>;
+
   return (
     <Row className="m-lg-5">
-      {DATA.map(ListingsListItem)}
+      {data.allListings.map(ListingsListItem)}
     </Row>
   );
 }
