@@ -9,7 +9,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 function ListingsList() {
   const { loading, data, error, fetchMore } = useQuery(GET_ALL_LISTINGS, {
     variables: {
-      limit: PAGINATION_PAGE_SIZE,
+      limit: 3,
       offset: 0
     }
   });

@@ -4,7 +4,7 @@ import { humanizeDate } from "../utils/utilsFunctions";
 
 function ListingsListItem({ id, name, price, shortAddress, createdAt, images }: Listing) {
   return (
-    <Col lg={3} sm={4} xs={3} key={id} className='listing-list-item'>
+    <Col lg={3} sm={4} xs={3} key={id} className="listing-list-item">
       <Row>
         <ListingImageCarousel images={images} id={id}/>
         <h3>{name}</h3>

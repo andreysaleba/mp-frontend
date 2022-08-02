@@ -1,8 +1,10 @@
-function ListingImageCarouselItem(image: string, index: number) {
+function ListingImageCarouselItem({ image, active }: { image: string, active: boolean }) {
   return (
-    <div key={index} className='listing-list-item-image-carousel'>
+    <div
+      className={`listing-list-item-image-carousel ${active ? "listing-list-item-image-carousel-active-image" : ""}`}>
       <img
         src={image}
+        className="listing-list-item-image-carousel-image"
       />
     </div>
   );

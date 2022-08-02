@@ -2,28 +2,45 @@
   filter: brightness(50%);
 }
 
+.listing-list-item-image-carousel-image {
+  max-height: 50%;
+  max-width: 50%;
+}
+
+.listing-list-item-image-carousel {
+  //position: absolute;
+  visibility: hidden;
+}
+
 .listing-carousel-last-image-label {
   left: 60%;
-  top: 50%;
+  top: 25%;
   z-index: 100;
   color: white;
   position: absolute;
   transform: translate(-50%, -50%);
 }
 
-.listing-list-item-image-carousel {
+.listing-item-wrapper {
   position: relative;
 }
 
-//.listing-image-carousel-dots-container {
-//  position: absolute;
-//  bottom: 0;
-//  margin-left: auto;
-//  margin-right: auto;
-//  left: 0;
-//  right: 0;
-//}
+.listing-carousel {
+}
 
-body {
-  background-color: gray
+.listing-list-item-image-carousel-active-image {
+  visibility: visible;
+}
+
+.listing-image-carousel-dots-container {
+  bottom: 60%;
+  z-index: 100;
+}
+
+.listing-item-image-carousel-dot::after {
+  content: '';
+  width: 100%;
+  border: 2px solid red;
+  display: inline-block;
+  background: red;
 }
