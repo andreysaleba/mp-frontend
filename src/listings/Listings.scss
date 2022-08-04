@@ -3,18 +3,18 @@
 }
 
 .listing-list-item-image-carousel-image {
-  max-height: 50%;
-  max-width: 50%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .listing-list-item-image-carousel {
-  //position: absolute;
+  position: absolute;
   visibility: hidden;
 }
 
 .listing-carousel-last-image-label {
-  left: 60%;
-  top: 25%;
+  left: 50%;
+  top: 50%;
   z-index: 100;
   color: white;
   position: absolute;
@@ -26,6 +26,11 @@
 }
 
 .listing-carousel {
+  position: relative;
+}
+
+.listing-carousel:hover + .listing-image-carousel-dots-container {
+  visibility: visible;
 }
 
 .listing-list-item-image-carousel-active-image {
@@ -33,14 +38,25 @@
 }
 
 .listing-image-carousel-dots-container {
-  bottom: 60%;
-  z-index: 100;
+  position: relative;
+  visibility: hidden;
 }
 
 .listing-item-image-carousel-dot::after {
   content: '';
   width: 100%;
-  border: 2px solid red;
+  border: 2px solid lightgray;
   display: inline-block;
-  background: red;
+  background: lightgray;
+}
+
+.listing-item-image-carousel-dot-active::after {
+  border: 2px solid lightblue;
+  background: lightblue;
+}
+
+.listing-image-carousel-dots-container-row {
+  position: absolute;
+  width: 100%;
+  bottom: 45%;
 }

@@ -1,7 +1,5 @@
 import { MutableRefObject, useCallback, useRef, useState } from "react";
 
-const handleMouseOut = (setValue: Function): void => setValue(0);
-
 function useListingImageCarouselHoverSlide<T>(): [ MutableRefObject<T>, number ] {
   const [ value, setValue ] = useState<number>(0);
   const handleMouseOver = (e: MouseEvent): void => {
@@ -15,24 +13,24 @@ function useListingImageCarouselHoverSlide<T>(): [ MutableRefObject<T>, number ]
       setValue(positionInPercents);
     }
   };
-
-  const handleMouseOutWithSetValue = handleMouseOut.bind(setValue);
+  const handleMouseOut = (): void => setValue(1);
   const ref: any = useRef<T | null>(null);
 
   const callbackRef = useCallback<any>(
-    (node: any) => {
-
+    (node: HTMLElement) => {
       if (ref.current) {
         ref.current.removeEventListener("mousemove", handleMouseOver);
+        ref.current.removeEventListener("mouseout", handleMouseOut);
       }
 
       ref.current = node;
 
       if (ref.current) {
         ref.current.addEventListener("mousemove", handleMouseOver);
+        ref.current.addEventListener("mouseout", handleMouseOut);
       }
     },
-    [ handleMouseOver, handleMouseOutWithSetValue ]
+    [ handleMouseOver, handleMouseOut ]
   );
 
 

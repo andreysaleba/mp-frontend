@@ -9,7 +9,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 function ListingsList() {
   const { loading, data, error, fetchMore } = useQuery(GET_ALL_LISTINGS, {
     variables: {
-      limit: 3,
+      limit: PAGINATION_PAGE_SIZE,
       offset: 0
     }
   });
@@ -23,10 +23,10 @@ function ListingsList() {
     <InfiniteScroll
       dataLength={allListings.length}
       next={() => fetchMore({ variables: { limit: PAGINATION_PAGE_SIZE, offset: allListings.length } })}
-      hasMore={false}
+      hasMore={true}
       loader={<h4>Loading...</h4>}
       endMessage={
-        <p style={{ textAlign: "center" }}>
+        <p>
           <b>Yay! You have seen it all</b>
         </p>
       }

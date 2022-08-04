@@ -2,17 +2,17 @@ import ListingImageCarouselItem from "./ListingImageCarouselItem";
 import ListingImageLastCarouselItem from "./ListingImageLastCarouselItem";
 import ListingImageCarouselDotsContainer from "./ListingImageCarouselDotsContainer";
 import useListingImageCarouselHoverSlide from "./useListingImageCarouselHoverSlide";
-import { Container } from "react-bootstrap";
+import useListingImageCarouselPostRender from "./useListingImageCarouselPostRender";
 
 const LIST_CAROUSEL_IMAGES_TO_DISPLAY = 5;
 
-function renderCarouselWithLessThanLimitItems(images: string[], activeIndex: number) {
+function renderCarouselWithLessThanLimitItems(images: string[], activeIndex: number, id: number) {
   return (
-    images.map((image, index) => <ListingImageCarouselItem key={index} image={image} active={index === activeIndex}/>)
+    images.map((image, index) => <ListingImageCarouselItem key={index} image={image} active={index === activeIndex} />)
   );
 }
 
-function renderCarouselWithMoreThanLimitItems(images: string[], activeIndex: number) {
+function renderCarouselWithMoreThanLimitItems(images: string[], activeIndex: number, id: number) {
   return (
     <>
       {images.slice(0, LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1).map((image, index) => <ListingImageCarouselItem key={index}
@@ -20,7 +20,7 @@ function renderCarouselWithMoreThanLimitItems(images: string[], activeIndex: num
                                                                                                             active={activeIndex === index}/>)}
       <ListingImageLastCarouselItem image={images[LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1]}
                                     imagesLeft={images.length - LIST_CAROUSEL_IMAGES_TO_DISPLAY}
-                                    active={activeIndex === LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1}/>
+                                    active={activeIndex === LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1} />
     </>
   );
 }
@@ -31,16 +31,18 @@ function ListingImageCarousel({ images, id }: { images: string[], id: number }) 
   const slidesToDisplay = Math.min(images.length, LIST_CAROUSEL_IMAGES_TO_DISPLAY);
   const activeIndex = Math.floor(value / (100 / slidesToDisplay));
 
+  useListingImageCarouselPostRender(id);
   return (
     <>
-      <div ref={ref} className="listing-carousel">
+      <div ref={ref} className="listing-carousel" id={`listing-carousel-${id}`}>
         {imagesCount >= LIST_CAROUSEL_IMAGES_TO_DISPLAY
-          ? renderCarouselWithMoreThanLimitItems(images, activeIndex)
-          : renderCarouselWithLessThanLimitItems(images, activeIndex)
+          ? renderCarouselWithMoreThanLimitItems(images, activeIndex, id)
+          : renderCarouselWithLessThanLimitItems(images, activeIndex, id)
         }
 
       </div>
       <ListingImageCarouselDotsContainer id={id}
+                                         activeIndex={activeIndex}
                                          dotsNumber={Math.min(images.length, LIST_CAROUSEL_IMAGES_TO_DISPLAY)}/>
     </>
   );
