@@ -1,11 +1,14 @@
-function ListingImageCarouselItem({ image, active }: { image: string, active: boolean }) {
+import styles from "./Listings.module.scss";
+import { classes } from "../utils/utilsFunctions";
+import { IListingImageCarouselItemProps } from "./listings";
 
+function ListingImageCarouselItem({ image, active }: IListingImageCarouselItemProps) {
   return (
     <div
-      className={`listing-list-item-image-carousel ${active ? "listing-list-item-image-carousel-active-image" : ""}`}>
+      className={classes(styles.carousel, active ? styles.activeImage : "")}>
       <img
-        src={`${image}?t=${Math.random()}`}
-        className="listing-list-item-image-carousel-image"
+        src={image}
+        className={styles.image}
       />
     </div>
   );

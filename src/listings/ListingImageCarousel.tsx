@@ -3,12 +3,14 @@ import ListingImageLastCarouselItem from "./ListingImageLastCarouselItem";
 import ListingImageCarouselDotsContainer from "./ListingImageCarouselDotsContainer";
 import useListingImageCarouselHoverSlide from "./useListingImageCarouselHoverSlide";
 import useListingImageCarouselPostRender from "./useListingImageCarouselPostRender";
+import styles from "./Listings.module.scss";
+import { IListingImageCarouselProps } from "./listings";
 
 const LIST_CAROUSEL_IMAGES_TO_DISPLAY = 5;
 
 function renderCarouselWithLessThanLimitItems(images: string[], activeIndex: number, id: number) {
   return (
-    images.map((image, index) => <ListingImageCarouselItem key={index} image={image} active={index === activeIndex} />)
+    images.map((image, index) => <ListingImageCarouselItem key={index} image={image} active={index === activeIndex}/>)
   );
 }
 
@@ -20,12 +22,12 @@ function renderCarouselWithMoreThanLimitItems(images: string[], activeIndex: num
                                                                                                             active={activeIndex === index}/>)}
       <ListingImageLastCarouselItem image={images[LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1]}
                                     imagesLeft={images.length - LIST_CAROUSEL_IMAGES_TO_DISPLAY}
-                                    active={activeIndex === LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1} />
+                                    active={activeIndex === LIST_CAROUSEL_IMAGES_TO_DISPLAY - 1}/>
     </>
   );
 }
 
-function ListingImageCarousel({ images, id }: { images: string[], id: number }) {
+function ListingImageCarousel({ images, id }: IListingImageCarouselProps) {
   const imagesCount = images.length;
   const [ ref, value ] = useListingImageCarouselHoverSlide<HTMLDivElement>();
   const slidesToDisplay = Math.min(images.length, LIST_CAROUSEL_IMAGES_TO_DISPLAY);
@@ -34,7 +36,7 @@ function ListingImageCarousel({ images, id }: { images: string[], id: number }) 
   useListingImageCarouselPostRender(id);
   return (
     <>
-      <div ref={ref} className="listing-carousel" id={`listing-carousel-${id}`}>
+      <div ref={ref} className={styles.listingCarousel} id={`listing-carousel-${id}`}>
         {imagesCount >= LIST_CAROUSEL_IMAGES_TO_DISPLAY
           ? renderCarouselWithMoreThanLimitItems(images, activeIndex, id)
           : renderCarouselWithLessThanLimitItems(images, activeIndex, id)

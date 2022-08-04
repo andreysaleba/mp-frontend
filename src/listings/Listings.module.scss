@@ -1,0 +1,62 @@
+.lastImage {
+  filter: brightness(50%);
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.carousel {
+  position: absolute;
+  visibility: hidden;
+}
+
+.lastImageLabel {
+  left: 50%;
+  top: 50%;
+  z-index: 100;
+  color: white;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.listingCarousel {
+  position: relative;
+}
+
+.listingCarousel:hover + .dotsContainer {
+  visibility: visible;
+}
+
+.activeImage {
+  visibility: visible;
+}
+
+.dotsContainer {
+  position: relative;
+  visibility: hidden;
+}
+
+.dot::after {
+  content: '';
+  width: 100%;
+  border: 1px solid lightgray;
+  display: inline-block;
+  background: lightgray;
+}
+
+.dot {
+  padding-right: 1px !important;
+}
+
+.activeDot::after {
+  border-color: lightblue;
+  background: lightblue;
+}
+
+.dotsContainerRow {
+  position: absolute;
+  width: 100%;
+  bottom: 45%;
+}

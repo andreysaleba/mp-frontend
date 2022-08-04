@@ -1,15 +1,19 @@
 import React from "react";
+import styles from "./Listings.module.scss";
+import { classes } from "../utils/utilsFunctions";
+import { IListingImageLastCarouselItemProps } from "./listings";
 
 function ListingImageLastCarouselItem({
                                         image,
                                         imagesLeft,
                                         active
-                                      }: { image: string, imagesLeft: number, active?: boolean }) {
+                                      }: IListingImageLastCarouselItemProps) {
   return (
     <div
-      className={`listing-list-item-image-carousel ${active ? "listing-list-item-image-carousel-active-image" : ""}`}>
-      <div className="listing-carousel-last-image-label">{imagesLeft} more photo{imagesLeft > 1 ? "s" : ""}</div>
-      <img src={`${image}?t=${Math.random()}`} className="listing-image-carousel-last-image listing-list-item-image-carousel-image"/>
+      className={classes(styles.carousel, active ? styles.activeImage : "")}>
+      <div className={styles.lastImageLabel}>{imagesLeft} more photo{imagesLeft > 1 ? "s" : ""}</div>
+      <img src={image}
+           className={classes(styles.lastImage, styles.image)}/>
 
     </div>
   );

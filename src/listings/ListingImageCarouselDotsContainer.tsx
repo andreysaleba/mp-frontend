@@ -1,16 +1,21 @@
 import { Col, Container, Row } from "react-bootstrap";
+import styles from "./Listings.module.scss";
+import { classes } from "../utils/utilsFunctions";
+import { IListingImageCarouselDotsContainerProps } from "./listings";
 
 function ListingImageCarouselDotsContainer({
                                              id,
                                              dotsNumber,
                                              activeIndex
-                                           }: { id: number, dotsNumber: number, activeIndex: number }) {
+                                           }: IListingImageCarouselDotsContainerProps) {
   if (dotsNumber > 1) {
     return (
-
-      <Container fluid className="listing-image-carousel-dots-container">
-        <Row className={`listing-image-carousel-dots-container-${id} listing-image-carousel-dots-container-row`}>
-          {[ ...Array(dotsNumber) ].map((e, i) => <Col className={`listing-item-image-carousel-dot ${activeIndex === i ? 'listing-item-image-carousel-dot-active' : ''}`} key={i}/>)}
+      <Container fluid className={styles.dotsContainer}>
+        <Row
+          className={classes(`listing-image-carousel-dots-container-${id}`, styles.dotsContainerRow)}>
+          {[ ...Array(dotsNumber) ].map((e, i) => <Col
+            className={classes(styles.dot, activeIndex === i ? styles.activeDot : "")}
+            key={i}/>)}
         </Row>
       </Container>
     );

@@ -17,3 +17,7 @@ export function humanizeDate(date: Date) {
 function getTime(date: moment.Moment) {
   return date.format("h:mm a");
 }
+
+export function classes(...classesArray: string[]): string {
+  return classesArray.join(' ');
+}

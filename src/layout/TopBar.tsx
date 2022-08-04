@@ -1,7 +1,6 @@
 import ProfileMenu from "../profile/ProfileMenu";
 import { Col, Navbar } from "react-bootstrap";
 import Login from "../auth/Login";
-import "./TopBar.scss";
 
 function TopBar() {
   return (

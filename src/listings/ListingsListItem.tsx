@@ -1,10 +1,11 @@
 import { Col, Row } from "react-bootstrap";
 import ListingImageCarousel from "./ListingImageCarousel";
 import { humanizeDate } from "../utils/utilsFunctions";
+import { IListingListItemProps } from "./listings";
 
-function ListingsListItem({ id, name, price, shortAddress, createdAt, images }: Listing) {
+function ListingsListItem({ id, name, price, shortAddress, createdAt, images }: IListingListItemProps) {
   return (
-    <Col lg={3} sm={4} xs={3} key={id} className="listing-list-item">
+    <Col lg={3} sm={4} xs={3} key={id}>
       <Row>
         <ListingImageCarousel images={images} id={id}/>
         <h3>{name}</h3>

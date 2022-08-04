@@ -1,6 +1,5 @@
 import ListingsListItem from "./ListingsListItem";
 import { Col, Row } from "react-bootstrap";
-import "./Listings.scss";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_LISTINGS } from "../operations/queries/getAllListings";
 import { PAGINATION_PAGE_SIZE } from "../utils/const";
