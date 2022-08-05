@@ -6,13 +6,15 @@ import { IListingImageLastCarouselItemProps } from "./listings";
 function ListingImageLastCarouselItem({
                                         image,
                                         imagesLeft,
-                                        active
+                                        active,
+                                        name
                                       }: IListingImageLastCarouselItemProps) {
   return (
     <div
       className={classes(styles.carousel, active ? styles.activeImage : "")}>
       <div className={styles.lastImageLabel}>{imagesLeft} more photo{imagesLeft > 1 ? "s" : ""}</div>
       <img src={image}
+           alt={name}
            className={classes(styles.lastImage, styles.image)}/>
 
     </div>

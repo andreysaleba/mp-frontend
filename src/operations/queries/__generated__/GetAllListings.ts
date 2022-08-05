@@ -14,10 +14,16 @@ export interface GetAllListings_allListings {
   price: number;
   shortAddress: string;
   images: string[];
+  deliveryPossible: boolean;
   createdAt: any;
   updatedAt: any;
 }
 
 export interface GetAllListings {
   allListings: GetAllListings_allListings[];
+}
+
+export interface GetAllListingsVariables {
+  limit?: number | null;
+  offset?: number | null;
 }

@@ -8,6 +8,7 @@ export const GET_ALL_LISTINGS = gql`
       price
       shortAddress
       images
+      deliveryPossible
       createdAt
       updatedAt
     }

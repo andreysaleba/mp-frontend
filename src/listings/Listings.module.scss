@@ -1,3 +1,7 @@
+$primary-color: cornflowerblue;
+$hover-color: indianred;
+$secondary-color: gray;
+
 .lastImage {
   filter: brightness(50%);
 }
@@ -51,12 +55,41 @@
 }
 
 .activeDot::after {
-  border-color: lightblue;
-  background: lightblue;
+  border-color: $primary-color;
+  background: $primary-color;
 }
 
 .dotsContainerRow {
   position: absolute;
   width: 100%;
   bottom: 45%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.link:hover {
+  color: $hover-color;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.listingAttribute {
+  color: $secondary-color;
+}
+
+.deliveryPossible {
+  width: 32px;
+  height: 32px;
+}
+
+.deliveryPossible:hover {
+  fill: orange;
 }

@@ -1,3 +1,5 @@
+import { ForwardedRef, RefObject } from "react";
+
 export interface IListingListItemProps {
   id: number;
   name: string;
@@ -5,11 +7,13 @@ export interface IListingListItemProps {
   shortAddress: string;
   createdAt: Date;
   images: string[];
+  deliveryPossible: boolean;
 }
 
 export interface IListingImageCarouselProps {
   images: string[],
-  id: number
+  id: number,
+  name: string
 }
 
 export interface IListingImageCarouselDotsContainerProps {
@@ -20,11 +24,21 @@ export interface IListingImageCarouselDotsContainerProps {
 
 export interface IListingImageCarouselItemProps {
   image: string,
-  active: boolean
+  active: boolean,
+  name: string
 }
 
 export interface IListingImageLastCarouselItemProps {
   image: string,
   imagesLeft: number,
-  active?: boolean
+  active?: boolean,
+  name: string
+}
+
+export interface IListingPriceProps {
+  price: number;
+}
+
+export interface IDeliveryPossibleProps {
+  deliveryPossible: boolean;
 }
