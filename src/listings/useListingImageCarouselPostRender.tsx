@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function useListingImageCarouselPostRender(id: number) {
   useEffect(() => {
-    setTimeout(() => {
+    setInterval(() => {
       const el = document.getElementById(`listing-carousel-${id}`);
       if (el) {
         const imgEl = document.querySelector(`#listing-carousel-${id} img`) as HTMLImageElement;

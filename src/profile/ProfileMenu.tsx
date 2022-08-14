@@ -2,6 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Logout from "../auth/Logout";
 import "./ProfileMenu.module.scss";
+import "./ProfileMenu.scss";
 import styles from "./ProfileMenu.module.scss";
 
 function ProfileMenu() {

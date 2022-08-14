@@ -39,7 +39,7 @@ function ListingImageCarousel({ images, id, name }: IListingImageCarouselProps) 
   return (
     <a href={'#'} title={`${name} listing`}>
       <div ref={ref} className={styles.listingCarousel} id={`listing-carousel-${id}`}>
-        {imagesCount >= LIST_CAROUSEL_IMAGES_TO_DISPLAY
+        {imagesCount > LIST_CAROUSEL_IMAGES_TO_DISPLAY
           ? renderCarouselWithMoreThanLimitItems(images, activeIndex, name)
           : renderCarouselWithLessThanLimitItems(images, activeIndex, name)
         }
